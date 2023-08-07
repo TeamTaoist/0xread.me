@@ -34,7 +34,7 @@
   "resolved" "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.22.9.tgz"
   "version" "7.22.9"
 
-"@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.0.0-0 || ^8.0.0-0 <8.0.0", "@babel/core@^7.11.6", "@babel/core@^7.12.0", "@babel/core@^7.12.3", "@babel/core@^7.13.0", "@babel/core@^7.13.16", "@babel/core@^7.20.0", "@babel/core@^7.4.0 || ^8.0.0-0 <8.0.0", "@babel/core@^7.8.0", "@babel/core@>=7.11.0":
+"@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.0.0-0 || ^8.0.0-0 <8.0.0", "@babel/core@^7.11.6", "@babel/core@^7.12.0", "@babel/core@^7.12.3", "@babel/core@^7.13.0", "@babel/core@^7.13.16", "@babel/core@^7.18.13", "@babel/core@^7.20.0", "@babel/core@^7.4.0 || ^8.0.0-0 <8.0.0", "@babel/core@^7.8.0", "@babel/core@>=7.11.0":
   "integrity" "sha512-G2EgeufBcYw27U4hhoIwFcgc1XU7TlXJ3mv04oOv1WCuo900U/anZSPzEqNjwdjgffkk2Gs0AN0dW1CKVLcG7w=="
   "resolved" "https://registry.npmjs.org/@babel/core/-/core-7.22.9.tgz"
   "version" "7.22.9"
@@ -5500,12 +5500,28 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
-"react-native-nfc-manager@^3.14.6":
+"react-native-hce@^0.2.0":
+  "integrity" "sha512-WSxK+C9KiKJwzmsb63VeN+Ppcg91w2SoUebQjJif1+OKEm99OgJd9yZeEuIisPU1LQTmch+gcN0069N8hsaWcA=="
+  "resolved" "https://registry.npmjs.org/react-native-hce/-/react-native-hce-0.2.0.tgz"
+  "version" "0.2.0"
+  dependencies:
+    "@babel/core" "^7.18.13"
+    "@babel/preset-env" "^7.1.6"
+
+"react-native-nfc-manager@^3.14.0", "react-native-nfc-manager@^3.14.6":
   "integrity" "sha512-A86vnMzQ6KzNGoCevI3t7VIju5mAzDeQ5hvGJI7Z7ANtDDfJEDNhqgilxqGi0KX0mDxGEYsctW8GHsJ1Jg/WKQ=="
   "resolved" "https://registry.npmjs.org/react-native-nfc-manager/-/react-native-nfc-manager-3.14.6.tgz"
   "version" "3.14.6"
   dependencies:
     "@expo/config-plugins" "~7.2.2"
+
+"react-native-nfc-sdk@^0.3.4-beta":
+  "integrity" "sha512-nna3ABeBLpAva2KRYMZ3I+W03Gdgn7OJAqHq0txQutsxJntdlW45gLthzoshRa4XgJZOBbOz8KJ31OgfNy27AQ=="
+  "resolved" "https://registry.npmjs.org/react-native-nfc-sdk/-/react-native-nfc-sdk-0.3.4-beta.tgz"
+  "version" "0.3.4-beta"
+  dependencies:
+    "react-native-hce" "^0.2.0"
+    "react-native-nfc-manager" "^3.14.0"
 
 "react-native@*", "react-native@0.72.3":
   "integrity" "sha512-QqISi+JVmCssNP2FlQ4MWhlc4O/I00MRE1/GClvyZ8h/6kdsyk/sOirkYdZqX3+DrJfI3q+OnyMnsyaXIQ/5tQ=="
