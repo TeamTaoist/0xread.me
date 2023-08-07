@@ -1,7 +1,10 @@
 import { config } from "dotenv";
 import express from "express";
-import groupApi from "./router/group";
+import groupApi from "./router/group/api";
 import cors from "cors";
+// import { initDB } from "./utils/db_discarded";
+
+// initDB();
 
 const app = express();
 const port = 3000;
