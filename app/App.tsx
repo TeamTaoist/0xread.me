@@ -17,8 +17,9 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import NfcManager from 'react-native-nfc-manager';
-import ReadTag from './src/readTag';
-import WriteTag from './src/writeTag';
+// import ReadTag from './src/readTag';
+// import WriteTag from './src/writeTag';
+import HceCard from './src/hce';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -59,12 +60,13 @@ function App(): JSX.Element {
         <Button title="generate" onPress={generateProof} />
         {/* <View>support NFC : {hasNfc ? 'yes' : 'no'}</View> */}
       </ScrollView>
-      {hasNfc && (
+      {/* {hasNfc && (
         <>
           <ReadTag />
           <WriteTag />
         </>
-      )}
+      )} */}
+      <HceCard />
     </SafeAreaView>
   );
 }
