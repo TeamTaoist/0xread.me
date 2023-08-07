@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/NewProofFragment">
+
+    <fragment
+        android:id="@+id/NewProofFragment"
+        android:name="me.zxread.userpass.NewProofFragment"
+        android:label="@string/new_proof_label"
+        tools:layout="@layout/new_proof_fragment"/>
+    <fragment
+        android:id="@+id/ShowProofFragment"
+        android:name="me.zxread.userpass.ShowProofFragment"
+        android:label="@string/show_proof_label"
+        tools:layout="@layout/show_proof_segment"/>
+</navigation>
