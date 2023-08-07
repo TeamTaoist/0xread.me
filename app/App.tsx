@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Button,
   SafeAreaView,
@@ -16,8 +16,15 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
+import NfcManager from 'react-native-nfc-manager';
+import ReadTag from './src/readTag';
+import WriteTag from './src/writeTag';
+
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+
+  const [hasNfc, setHasNFC] = useState<boolean>(false);
+  console.log('hasNfc', hasNfc);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -26,6 +33,19 @@ function App(): JSX.Element {
   const generateProof = () => {
     // TODO
   };
+
+  useEffect(() => {
+    const checkIsSupported = async () => {
+      const deviceIsSupported = await NfcManager.isSupported();
+
+      setHasNFC(deviceIsSupported);
+      if (deviceIsSupported) {
+        await NfcManager.start();
+      }
+    };
+
+    checkIsSupported();
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -37,7 +57,14 @@ function App(): JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Button title="generate" onPress={generateProof} />
+        {/* <View>support NFC : {hasNfc ? 'yes' : 'no'}</View> */}
       </ScrollView>
+      {hasNfc && (
+        <>
+          <ReadTag />
+          <WriteTag />
+        </>
+      )}
     </SafeAreaView>
   );
 }
