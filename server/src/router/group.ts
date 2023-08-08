@@ -35,7 +35,10 @@ router.get("/list", async (req: Express.Request, res: any) => {
 
   res.status(200).json({
     ...Default_Response,
-    data: grps,
+    data: grps.map((g: any) => ({
+      id: g.id,
+      name: g.name,
+    })),
   });
 });
 
