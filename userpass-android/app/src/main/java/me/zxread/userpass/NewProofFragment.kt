@@ -26,11 +26,10 @@ class NewProofFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = NewProofFragmentBinding.inflate(inflater, container, false)
-        val reqRsltView = binding.reqResult
 
-        binding.hhWuhanNew.setOnClickListener { rdmeClient.getProof("hhwhhan", 1, proofViewModel, activity, reqRsltView) }
-        binding.hhDaliNew.setOnClickListener { rdmeClient.getProof("hhdali", 2, proofViewModel, activity, reqRsltView) }
-        binding.hhTaibei.setOnClickListener { rdmeClient.getProof("hhtaibei", 3, proofViewModel, activity, reqRsltView) }
+        binding.newGroup1.setOnClickListener { rdmeClient.getProof("hhwhhan", 1, proofViewModel, activity, binding.group1ProofStatus) }
+        binding.newGroup2.setOnClickListener { rdmeClient.getProof("hhdali", 2, proofViewModel, activity, binding.group2ProofStatus) }
+        binding.newGroup3.setOnClickListener { rdmeClient.getProof("hhtaibei", 3, proofViewModel, activity, binding.group3ProofStauts) }
 
         return binding.root
 

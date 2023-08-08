@@ -12,73 +12,64 @@
         android:padding="16dp">
 
         <Button
-            android:id="@+id/hh_wuhan_new"
+            android:id="@+id/new_group1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hackerhouse_wuhan"
+            android:text="@string/group1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/hh_dali_new"
+            android:id="@+id/new_group2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
-            android:text="@string/hackerhouse_dali"
+            android:text="@string/group2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/hh_taibei"
+            android:id="@+id/new_group3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="136dp"
-            android:text="@string/hackerhouse_taibei"
+            android:text="@string/group3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/req_result"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hh_taibei" />
-
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/group1_proof_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
             android:src="@android:drawable/ic_lock_lock"
-            app:layout_constraintStart_toEndOf="@+id/hh_wuhan_new"
+            app:layout_constraintStart_toEndOf="@+id/new_group1"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/group2_proof_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="23dp"
             android:layout_marginTop="72dp"
             android:src="@android:drawable/ic_lock_lock"
-            app:layout_constraintStart_toEndOf="@+id/hh_dali_new"
+            app:layout_constraintStart_toEndOf="@+id/new_group2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/group3_proof_stauts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="144dp"
             android:src="@android:drawable/ic_lock_lock"
-            app:layout_constraintStart_toEndOf="@+id/hh_taibei"
+            app:layout_constraintStart_toEndOf="@+id/new_group3"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

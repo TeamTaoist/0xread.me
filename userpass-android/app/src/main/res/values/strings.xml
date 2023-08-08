@@ -5,12 +5,10 @@
     <string name="new_proof_label">New Proof</string>
     <string name="show_proof_label">Show Proofs</string>
 
-    <string name="hackhouse_wuhan">Hackhouse Wuhan</string>
-    <string name="hackhouse_dali">Hackhouse Dali</string>
+    <string name="group1">Hackhouse Wuhan</string>
+    <string name="group2">Hackhouse Shanghai</string>
+    <string name="group3">Hackhouse Chengdu</string>
     <string name="qrcode">qrcode</string>
-    <string name="hackerhouse_wuhan">HackerHouse Wuhan</string>
-    <string name="hackerhouse_dali">HackerHouse Dali</string>
-    <string name="hackerhouse_taibei">HackerHouse Taibei</string>
 
     <string name="action_about">About</string>
     <string name="action_help">Help</string>

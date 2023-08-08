@@ -15,7 +15,7 @@
             android:id="@+id/hh_wuhan_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hackhouse_wuhan"
+            android:text="@string/group1"
             android:textColorLink="#F8F8F8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
-            android:text="@string/hackhouse_dali"
+            android:text="@string/group2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,17 +44,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hh_dali_show"
             app:srcCompat="@android:drawable/gallery_thumb" />
-
-        <Button
-            android:id="@+id/start_emulation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/emulate"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/proof_qrcode" />
 
         <TextView
             android:id="@+id/qrContent"

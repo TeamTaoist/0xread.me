@@ -1,7 +1,9 @@
 package me.zxread.userpass
 
 import android.app.Activity
-import android.widget.TextView
+import android.graphics.Color
+import android.widget.ImageView
+import android.widget.Toast
 import com.fasterxml.jackson.databind.ObjectMapper
 import okhttp3.Call
 import okhttp3.Callback
@@ -19,22 +21,26 @@ class ZxreadmeClient(base: String) {
     private val httpClient: OkHttpClient = OkHttpClient()
     private val objMapper = ObjectMapper()
 
-    fun getProof(signMsg: String, groupId: Int, proofsViewModel: ProofViewModel, activity: Activity?, textRsltView: TextView) {
+    fun getProof(signMsg: String, groupId: Int, proofsViewModel: ProofViewModel, activity: Activity?, statusView: ImageView) {
         val requestProofData = mapOf("sign_msg" to signMsg, "group_id" to groupId)
         val reqBody = JSONObject(requestProofData).toString().toRequestBody("application/json".toMediaType())
         val request = Request.Builder().url(requestProofUrl).post(reqBody).build()
 
+        statusView.setColorFilter(Color.YELLOW)
+
         try {
             httpClient.newCall(request).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
-                    activity?.runOnUiThread { textRsltView.text = e.message }
+                    activity?.runOnUiThread {
+                        Toast.makeText(activity, "request failed: ${e.message}", Toast.LENGTH_LONG).show()
+                    }
                 }
 
                 override fun onResponse(call: Call, response: Response) {
                     response.use {
                         if (!response.isSuccessful) {
                             activity?.runOnUiThread {
-                                textRsltView.text = response.toString()
+                                Toast.makeText(activity, "unexpected response: $response", Toast.LENGTH_LONG).show()
                             }
                         } else {
                             val respContent = response.body?.string()
@@ -42,14 +48,15 @@ class ZxreadmeClient(base: String) {
                             proofsViewModel.setProof(groupId, "$verifyUrl$respProof")
 
                             activity?.runOnUiThread {
-                                textRsltView.text = respProof
+                                Toast.makeText(activity, "request completed", Toast.LENGTH_LONG).show()
+                                statusView.setColorFilter(Color.GREEN)
                             }
                         }
                     }
                 }
             })
         } catch (e: IllegalStateException) {
-            activity?.runOnUiThread { textRsltView.text = e.message }
+            activity?.runOnUiThread { Toast.makeText(activity, "exception: ${e.message}", Toast.LENGTH_LONG).show() }
         }
     }
 }
