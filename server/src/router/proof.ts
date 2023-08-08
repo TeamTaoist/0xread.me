@@ -71,13 +71,13 @@ router.post("/issue", async (req: Request, res: Response) => {
 });
 
 // Verify Proof
-router.post("/verify", async (req: Request, res: Response) => {
-  const { proof } = req.body;
+router.get("/verify", async (req: Request, res: Response) => {
+  const { proof } = req.query;
 
   let fp: FullProof;
 
   try {
-    fp = JSON.parse(proof);
+    fp = JSON.parse(proof as string);
   } catch (error) {
     res.status(200).json(
       generateSuccessResponse({
