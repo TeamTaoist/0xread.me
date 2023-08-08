@@ -1,6 +1,6 @@
 import express, { Request } from "express";
-import { Default_Response, Default_Error_Response } from "../../constant";
-import * as group from "./group";
+import { Default_Response, Default_Error_Response } from "../constant";
+import * as group from "../controller/group";
 
 const router = express.Router();
 

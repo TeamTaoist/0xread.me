@@ -51,6 +51,7 @@ const sequelizeInit = async () => {
         primaryKey: true,
       },
       name: DataTypes.STRING,
+      members: DataTypes.ARRAY(DataTypes.BIGINT),
     });
     await sequelize.sync();
     return {
