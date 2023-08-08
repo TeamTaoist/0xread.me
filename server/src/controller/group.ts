@@ -1,14 +1,12 @@
-import { group } from "console";
 import db from "../db";
 
 export const insertGroup = async (name: string) => {
   const { group: Group } = db.getSequelizeData();
   const newGroup = await Group.create({
     name,
-    members: [],
+    members: null,
   });
 
-  console.log("newGroup:", newGroup);
   return newGroup.id;
 };
 
@@ -16,16 +14,25 @@ export const getList = async () => {
   const { group: Group } = db.getSequelizeData();
   const groups = await Group.findAll();
 
-  console.log("groups:", groups);
-  return groups;
+  let list = groups.map((g: any) => {
+    g.members = g.members && g.members.split(",").map((m: string) => BigInt(m));
+    return g;
+  });
+
+  return list;
 };
 
 export const getGroupById = (id: number) => {
   const { group: Group } = db.getSequelizeData();
-  return Group.findOne({ where: { id } });
+  let one = Group.findOne({ where: { id } });
+  one.members = one.members && one.members.split(",").map((m: string) => BigInt(m));
+
+  return one;
 };
 
-export const updateGroupMembers = (id: number, members: BigInt[]) => {
+export const updateGroupMembers = (id: number, members_: BigInt[]) => {
   const { group: Group } = db.getSequelizeData();
+
+  let members = members_.join(",");
   return Group.update({ members }, { where: { id } });
 };
