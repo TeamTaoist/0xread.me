@@ -37,19 +37,21 @@ router.post("/issue", async (req: Request, res: Response) => {
 
   try {
     const identity = new Identity(sign_msg);
+
     // check group members
-    const group = new Group(group_id, DEPTH, group_data.members);
-    if (group.indexOf(identity.commitment) === -1) {
-      group.addMember(identity.commitment);
-      // update members of group in db
-      const members = group_data.members as BigInt[];
-      try {
-        groupController.updateGroupMembers(group_id, members);
-      } catch (error) {
-        res.status(500).json(generateErrorResponse(ErrorData.DATABASE_ERROR));
-        return;
-      }
-    }
+    const group = new Group(group_id, DEPTH, group_data.members || []);
+   if (group.indexOf(identity.commitment) === -1) {
+     group.addMember(identity.commitment);
+     // update members of group in db
+     const members = group.members as BigInt[];
+
+     try {
+       groupController.updateGroupMembers(group_id, members);
+     } catch (error) {
+       res.status(500).json(generateErrorResponse(ErrorData.DATABASE_ERROR));
+       return;
+     }
+   }
     const fullProof = await generateProof(identity, group, group.root, SIGNAL, {
       zkeyFilePath: path.join(__dirname, "../files/semaphore.zkey"),
       wasmFilePath: path.join(__dirname, "../files/semaphore.wasm"),
@@ -59,7 +61,7 @@ router.post("/issue", async (req: Request, res: Response) => {
 
     res.status(200).json(
       generateSuccessResponse({
-        proof: fullProof,
+        proof: JSON.stringify(fullProof),
       })
     );
   } catch (error) {
@@ -69,12 +71,12 @@ router.post("/issue", async (req: Request, res: Response) => {
 
 // Verify Proof
 router.post("/verify", async (req: Request, res: Response) => {
-  const { fullProof } = req.body;
+  const { proof } = req.body;
 
   let fp: FullProof;
 
   try {
-    fp = JSON.parse(fullProof);
+    fp = JSON.parse(proof);
   } catch (error) {
     res.status(200).json(
       generateSuccessResponse({
@@ -85,7 +87,7 @@ router.post("/verify", async (req: Request, res: Response) => {
   }
 
   try {
-    const result = await verifyProof(fullProof, DEPTH);
+    const result = await verifyProof(fp, DEPTH);
     res.status(200).json(
       generateSuccessResponse({
         result,

@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 import express from "express";
 import groupApi from "./router/group";
-import identityApi from "./router/proof"
+import proofApi from "./router/proof"
 import cors from "cors";
 
 const app = express();
@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/group", groupApi);
-app.use("/proof", identityApi);
+app.use("/proof", proofApi);
 
 app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
