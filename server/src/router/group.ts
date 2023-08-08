@@ -30,6 +30,10 @@ router.put("/create", async (req: Request, res: any) => {
 
 router.get("/list", async (req: Express.Request, res: any) => {
   const grps = await group.getList();
+
+  console.log("list groups:", grps);
+
+
   res.status(200).json({
     ...Default_Response,
     data: grps,

@@ -7,12 +7,16 @@ export const insertGroup = async (name: string) => {
     name,
     members: [],
   });
+
+  console.log("newGroup:", newGroup);
   return newGroup.id;
 };
 
 export const getList = async () => {
   const { group: Group } = db.getSequelizeData();
   const groups = await Group.findAll();
+
+  console.log("groups:", groups);
   return groups;
 };
 

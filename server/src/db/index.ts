@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
+import { Sequelize, DataTypes } from "sequelize";
 import sqlite3 from "sqlite3";
 
 const { verbose } = sqlite3;
@@ -51,7 +51,7 @@ const sequelizeInit = async () => {
         primaryKey: true,
       },
       name: DataTypes.STRING,
-      members: DataTypes.ARRAY(DataTypes.BIGINT),
+      members: DataTypes.STRING,
     });
     await sequelize.sync();
     return {
