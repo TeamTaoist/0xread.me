@@ -1,19 +1,12 @@
 package me.zxread.userpass
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import me.zxread.userpass.databinding.ActivityMainBinding
 
 
@@ -21,13 +14,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
-    private lateinit var mAddFab: FloatingActionButton
-    private lateinit var mAddAlarmFab: FloatingActionButton
-    private lateinit var mAddPersonFab: FloatingActionButton
-
-    private lateinit var addAlarmActionText: TextView
-    private lateinit var addPersonActionText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        var fabVisable = false;
+        var fabVisable = false
 
         binding.fab.setOnClickListener {
             if (!fabVisable) {
@@ -77,5 +63,7 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+
 }
 
