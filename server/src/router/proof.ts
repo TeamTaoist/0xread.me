@@ -40,8 +40,9 @@ router.post("/issue", async (req: Request, res: Response) => {
 
     // check group members
     const group = new Group(group_id, DEPTH, group_data.members || []);
-   if (group.indexOf(identity.commitment) === -1) {
-     group.addMember(identity.commitment);
+    if (group.indexOf(identity.commitment) === -1) {
+      group.addMember(identity.commitment);
+      
      // update members of group in db
      const members = group.members as BigInt[];
 

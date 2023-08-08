@@ -22,15 +22,15 @@ export const getList = async () => {
   return list;
 };
 
-export const getGroupById = (id: number) => {
+export const getGroupById = async (id: number) => {
   const { group: Group } = db.getSequelizeData();
-  let one = Group.findOne({ where: { id } });
+  const one = await Group.findOne({ where: { id } });
   one.members = one.members && one.members.split(",").map((m: string) => BigInt(m));
-
   return one;
 };
 
 export const updateGroupMembers = (id: number, members_: BigInt[]) => {
+  console.log("update members_:", members_);
   const { group: Group } = db.getSequelizeData();
 
   let members = members_.join(",");
