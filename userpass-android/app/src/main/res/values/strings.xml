@@ -15,4 +15,5 @@
     <string name="action_about">About</string>
     <string name="action_help">Help</string>
     <string name="emulate">Emulate</string>
+    <string name="api_base">https://0xread.me/api</string>
 </resources>

@@ -1,27 +1,28 @@
 package me.zxread.userpass
 
 import android.app.Activity
-import android.util.Log
 import android.widget.TextView
+import com.fasterxml.jackson.databind.ObjectMapper
 import okhttp3.Call
 import okhttp3.Callback
-import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
+import org.json.JSONObject
 import java.io.IOException
 
-
 class ZxreadmeClient(base: String) {
-    private val identityApi: String = "$base/issue"
-    private val joinGroupApi: String = "$base/join"
+    private val requestProofUrl: String = "$base/proof/issue"
+    private val verifyUrl: String = "$base/proof/verify?proof="
     private val httpClient: OkHttpClient = OkHttpClient()
+    private val objMapper = ObjectMapper()
 
-    fun getIdentity(signMsg: String, activity: Activity?, textRsltView: TextView) {
-        val url =
-            identityApi.toHttpUrl().newBuilder().addQueryParameter("sign_msg", signMsg).build()
-        val request = Request.Builder().url(url).build()
-        Log.e("me.zxread.userpass", "request: $request")
+    fun getProof(signMsg: String, groupId: Int, proofsViewModel: ProofViewModel, activity: Activity?, textRsltView: TextView) {
+        val requestProofData = mapOf("sign_msg" to signMsg, "group_id" to groupId)
+        val reqBody = JSONObject(requestProofData).toString().toRequestBody("application/json".toMediaType())
+        val request = Request.Builder().url(requestProofUrl).post(reqBody).build()
 
         try {
             httpClient.newCall(request).enqueue(object : Callback {
@@ -36,8 +37,12 @@ class ZxreadmeClient(base: String) {
                                 textRsltView.text = response.toString()
                             }
                         } else {
+                            val respContent = response.body?.string()
+                            val respProof = objMapper.readTree(respContent).get(/* fieldName = */ "data").get("proof").asText()
+                            proofsViewModel.setProof(groupId, "$verifyUrl$respProof")
+
                             activity?.runOnUiThread {
-                                textRsltView.text = response.body!!.string()
+                                textRsltView.text = respProof
                             }
                         }
                     }
