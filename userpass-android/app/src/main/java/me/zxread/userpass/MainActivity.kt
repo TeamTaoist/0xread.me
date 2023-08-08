@@ -27,17 +27,17 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        var fabVisable = false
+        var fabVisible = false
 
         binding.fab.setOnClickListener {
-            if (!fabVisable) {
+            if (!fabVisible) {
                 binding.fabGenProof.show()
                 binding.fabShowProof.show()
 
                 binding.fabGenProof.visibility = View.VISIBLE
                 binding.fabShowProof.visibility = View.VISIBLE
 
-                fabVisable = true
+                fabVisible = true
             } else {
                 binding.fabGenProof.hide()
                 binding.fabShowProof.hide()
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 binding.fabGenProof.visibility = View.GONE
                 binding.fabShowProof.visibility = View.GONE
 
-                fabVisable = false
+                fabVisible = false
             }
         }
 

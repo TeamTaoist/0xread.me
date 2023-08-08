@@ -1,11 +1,10 @@
 package me.zxread.userpass
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import me.zxread.userpass.databinding.NewProofFragmentBinding
 
 /**
@@ -19,12 +18,22 @@ class NewProofFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val rdmeClient = ZxreadmeClient("https://httpbin.org/anything")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
         _binding = NewProofFragmentBinding.inflate(inflater, container, false)
+        val reqRsltView = binding.reqResult
+
+        binding.hhWuhanNew.setOnClickListener {
+            rdmeClient.getIdentity("hhwhhan", activity, reqRsltView)
+        }
+//        binding.hhDaliNew.setOnClickListener { rdmeClient.getIdentity("hhdali", reqRsltView) }
+//        binding.hhTaibei.setOnClickListener { rdmeClient.getIdentity("hhtaibei", reqRsltView) }
+
         return binding.root
 
     }

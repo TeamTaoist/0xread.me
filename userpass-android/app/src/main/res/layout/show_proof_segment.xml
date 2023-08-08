@@ -37,19 +37,32 @@
             android:id="@+id/proof_qrcode"
             android:layout_width="280dp"
             android:layout_height="280dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="108dp"
             android:contentDescription="@string/qrcode"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hh_dali_show"
             app:srcCompat="@android:drawable/gallery_thumb" />
+
+        <Button
+            android:id="@+id/start_emulation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/emulate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/proof_qrcode" />
 
         <TextView
             android:id="@+id/qrContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="92dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/proof_qrcode" />
     </androidx.constraintlayout.widget.ConstraintLayout>
