@@ -75,6 +75,7 @@ router.get("/verify", async (req: Request, res: Response) => {
   const { proof } = req.query;
 
   let fp: FullProof;
+  console.log("parse proof: ", decodeURIComponent(proof as string));
 
   try {
     fp = JSON.parse(proof as string);
